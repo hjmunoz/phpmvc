@@ -11,9 +11,11 @@
 //require_once funciona de la misma forma que el require solo, pero la diferencia es que este impide la carga del mismo archivo mas de una vez
 
 require_once "Controlador/plantillaControlador.php";
+require_once "Controlador/formulariosControlador.php";
 
 $plantilla = new ControladorPlantilla();
-$plantilla->TraerPlantilla();
+$plantilla->CtrTraerPlantilla();
+
 
 
 ?>

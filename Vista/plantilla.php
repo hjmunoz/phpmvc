@@ -33,7 +33,12 @@
     <div class="container-fluid bg-light">
         <div class="container">
             <ul class="nav nav-justified py-2 nav-pills">
-
+<!-----------------------------
+GET:$_GET['variable'] Variables que se pasan como parametros via url(
+    tambien conocida como cadena de consulta a travez de url
+    cuando es la primera variable se pasa con ?
+    las que siguen se separan con &
+)----------------------------------->
                 <?php
 
                 if (isset($_GET["pagina"])) : ?>
@@ -82,9 +87,23 @@
                     <?php endif ?>
 
                 <?php endif ?>
-                <?php
 
-                if (isset($_GET["pagina"])) : ?>
+                <?php if (isset($_GET["pagina"])) : ?>
+                        <?php if ($_GET["pagina"]=="suma") : ?>
+                            
+                        <li class="nav-item">
+                            <a class="nav-link activate" href="index.php?pagina=suma">Sumar</a>
+                        </li>
+                    <?php else : ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?pagina=suma">Sumar</a>
+                        </li>
+
+                    <?php endif ?>
+
+                    <?php endif?>
+
+                <?php if (isset($_GET["pagina"])) : ?>
                     <?php if ($_GET["pagina"] == "salir") : ?>
 
                         <li class="nav-item">
@@ -95,8 +114,10 @@
                             <a class="nav-link" href="index.php?pagina=salir">Salir</a>
                         </li>
 
-                    <?php endif ?>
+                <?php endif ?>
 
+                    
+                        
                 <?php else : ?>
                     <li class="nav-item">
                         <a class="nav-link active" href="index.php?pagina=registro">Registro</a>
@@ -110,6 +131,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?pagina=salir">Salir</a>
                     </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="index.php?pagina=suma">Sumar</a>
+                        </li>
                 <?php endif ?>
 
                 <!--Variable GET $_GET['variable'] es una variable que se pasa a traves de via URL 
@@ -131,14 +155,15 @@
         <div class="container">
             <?php
 
-            //ASSET->es una funcion que determina si una variable viene o no vacia o es o no es null.
+            //ISSET->es una funcion que determina si una variable viene o no vacia o es o no es null.
             if (isset($_GET["pagina"])) {
 
                 if (
                     $_GET["pagina"] == "registro" ||
                     $_GET["pagina"] == "ingreso" ||
                     $_GET["pagina"] == "inicio" ||
-                    $_GET["pagina"] == "salir"
+                    $_GET["pagina"] == "salir" ||
+                    $_GET["pagina"] == "suma"
                 ) {
                     include "paginas/" . $_GET["pagina"] . ".php";
                 }else {
